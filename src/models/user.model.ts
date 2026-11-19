@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema<IUser>({
         type: String,
         trim: true,
         required: true,
-        set: passwordEncrypte
+        set: passwordEncrypte,
+        select: false
     },
 
     email: {
@@ -48,12 +49,14 @@ const userSchema = new mongoose.Schema<IUser>({
 
     isStaff: {
         type: Boolean,
-        default: false
+        default: false,
+        immutable:true
     },
 
     isAdmin: {
         type: Boolean,
-        default: false
+        default: false,
+        immutable: true
     }
 }, {collection: 'users', timestamps: true});
 

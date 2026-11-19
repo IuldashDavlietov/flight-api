@@ -20,7 +20,8 @@ const flightSchema = new mongoose.Schema<IFlight>({
       createdId: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'User',
-        required: true
+        required: true,
+        immutable: true
     },
 
     flightNumber: {
@@ -34,35 +35,28 @@ const flightSchema = new mongoose.Schema<IFlight>({
         type: String,
         trim: true,
         required: true,
-        unique: true
     },
 
     departure: {
         type: String,
         trim: true,
         required: true,
-        unique: true
     },
 
     departureDate: {
         type: Date,
-        trim: true,
         required: true,
-        unique: true
     },
 
    arrival: {
         type: String,
         trim: true,
         required: true,
-        unique: true
     },
 
     arrivalDate: {
         type: Date,
-        trim: true,
         required: true,
-        unique: true
     },
     
 }, { collection: 'flights', timestamps: true });

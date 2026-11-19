@@ -4,7 +4,7 @@ import { mongoose } from '../configs/dbConnection';
 export interface IPassenger {
     firstName: string;
     lastName: string;
-    gender: string;
+    gender: 'Male' | 'Female' | 'Other',
     email: string;
     createdId: Types.ObjectId;
     createdAt: Date;
@@ -15,31 +15,32 @@ export interface IPassenger {
 export type PassengerBody = Pick<IPassenger, 'firstName' | 'lastName' | 'gender' | 'email'>;
 export type PassengerDocument = HydratedDocument<IPassenger>;
 
+
 const passengerSchema = new mongoose.Schema<IPassenger>({
     createdId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true,
+        immutable:true
     },
 
     firstName: {
         type: String,
         trim: true,
         required: true,
-        unique: true
     },
 
     lastName: {
         type: String,
         trim: true,
         required: true,
-        unique: true
     },
 
     gender: {
         type: String,
+        enum: ['Male', 'Female', 'Other'],
         trim: true,
         required: true,
-        unique: true
     },
 
     email: {

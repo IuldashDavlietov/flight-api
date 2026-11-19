@@ -1,0 +1,44 @@
+@baseUrl = http://127.0.0.1:8000
+
+#####################
+### User
+#####################
+
+# @name user_list
+GET {{baseUrl}}/users
+# Authorization: {{userToken}}
+
+###
+
+# @name user_read
+GET {{baseUrl}}/users/6afee836223d68608c1a2d4e
+# Authorization: {{userToken}}
+
+###
+
+# @name user_create
+POST {{baseUrl}}/users
+Content-Type: application/json
+# Authorization: {{userToken}}
+
+{
+    "username":"test123",
+    "password":"Pass@123",
+    "email":"test123@site.com"
+
+}
+
+###
+
+# @name user_update
+PUT {{baseUrl}}/users/6afee836223d68608c1a2d4e
+Content-Type: application/json
+
+{
+    "username": "username is updated"
+}
+
+###
+
+# @name user_delete
+DELETE {{baseUrl}}/users/6afee836223d68608c1a2d4e
