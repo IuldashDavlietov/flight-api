@@ -1,4 +1,4 @@
-import type { HydratedDocument } from "mongoose";
+import type{ HydratedDocument } from "mongoose";
 import { mongoose } from '../configs/dbConnection';
 import { passwordEncrypte } from "../utils";
 
@@ -33,6 +33,28 @@ const userSchema = new mongoose.Schema<IUser>({
         set: passwordEncrypte
     },
 
+    email: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: true,
+        match: [/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/, "Invalid email address."],
+    },
 
+    isActive: {
+        type: Boolean,
+        default: true
+    },
 
-})
+    isStaff: {
+        type: Boolean,
+        default: false
+    },
+
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
+}, {collection: 'users', timestamps: true});
+
+export default  mongoose.model<IUser>('User', userSchema);

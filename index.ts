@@ -4,6 +4,7 @@ import { dbConnection } from './src/configs/dbConnection';
 import errorHandlerMiddleware, {notFound} from './src/middlewares/errorHandler.middleware';
 import queryHandler from './src/middlewares/queryHandler.middleware';
 import loggerMiddleware from './src/middlewares/logger.middleware';
+import { globalRouter } from './src/routes/index.route';
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,9 @@ app.use(queryHandler)
 
 // logger
 app.use(loggerMiddleware)
+
+// Routers
+app.use('/', globalRouter)
 
 
 
