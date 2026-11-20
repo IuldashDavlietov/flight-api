@@ -11,7 +11,6 @@ export const validateId: RequestHandler = (req, res, next) => {
 };
 
 export const validateBody: RequestHandler = (req, res, next) => {
-
     if (!req.body || typeof req.body !== "object" || Array.isArray(req.body)) {
         throw new CustomError("Request body must be a valid JSON object", 400);
     }

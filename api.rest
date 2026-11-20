@@ -42,3 +42,98 @@ Content-Type: application/json
 
 # @name user_delete
 DELETE {{baseUrl}}/users/6afee836223d68608c1a2d4e
+
+
+###
+
+
+#####################
+### Flight
+#####################
+
+
+# @name reservations_list
+GET {{baseUrl}}/flights
+# Authorization: {{userToken}}
+
+###
+
+# @name reservations_read
+GET {{baseUrl}}/flights
+# Authorization: {{userToken}}
+
+###
+
+# @name reservations_create
+POST {{baseUrl}}/flights
+Content-Type: application/json
+# Authorization: {{userToken}}
+
+{
+    "userId":"6afee864223d68608c1a2d4f",
+    "flightNumber":"DE123456",
+    "airline":"Berlin Airlines  & Co",
+    "departure": "Berlin",
+    "departureDate": "2028.01.01",
+    "arrival": "Porto",
+    "arrivalDate": "2028.01.01"
+}
+
+###
+
+# @name reservations_update
+PUT {{baseUrl}}/flights/6b0023008e59f7a2be2b26df
+Content-Type: application/json
+
+{
+    "departure": "DEPARTURE IS UPTATED - Kharkiv"
+}
+
+###
+
+# @name user_delete
+DELETE {{baseUrl}}/flights
+
+
+#####################
+### Reservation
+#####################
+
+
+# @name reservations_list
+GET {{baseUrl}}/reservations
+# Authorization: {{userToken}}
+
+###
+
+# @name reservations_read
+GET {{baseUrl}}/reservations
+# Authorization: {{userToken}}
+
+###
+
+# @name reservations_create
+POST {{baseUrl}}/reservations
+Content-Type: application/json
+# Authorization: {{userToken}}
+
+{
+   "flightId": "6b001c0de67a29edf8859277",
+   "passenger": "",
+   "createdId": ""
+}
+
+###
+
+# @name reservations_update
+PUT {{baseUrl}}/reservations
+Content-Type: application/json
+
+{
+    "departure": "DEPARTURE IS UPTATED"
+}
+
+###
+
+# @name user_delete
+DELETE {{baseUrl}}/reservations/6b0021a58e59f7a2be2b26dd
